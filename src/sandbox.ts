@@ -160,16 +160,49 @@
 
 //Type Aliases.
 //Type aliases create a new name for a type. If the type name is too long you can introduce a different shorter name.
-type StringOrNum = string | number;
-type objWithName = {
-  name: string;
-  uid: StringOrNum;
+// type StringOrNum = string | number;
+// type objWithName = {
+//   name: string;
+//   uid: StringOrNum;
+// };
+
+// const logDetails = (uid: StringOrNum, item: string) => {
+//   console.log(`${item} has a uid of ${uid}`);
+// };
+
+// const greet = (user: objWithName) => {
+//   console.log(`${user.name} says hello`);
+// };
+
+//Function Signatures
+// let greet: Function;
+//example 1
+//define a signature of a function. Define how many parameters it will require, and their type, and the return type of a function. VOID means- you use the void type as the return type of functions that do not return a value.
+let greet: (a: string, b: string) => void;
+greet = (name: string, greeting: string) => {
+  console.log(`${name} says ${greeting}`);
 };
 
-const logDetails = (uid: StringOrNum, item: string) => {
-  console.log(`${item} has a uid of ${uid}`);
+greet("Bob", "Hi");
+//example 2
+let calc: (a: number, b: number, c: string) => number;
+calc = (numOne: number, numTwo: number, action: string) => {
+  if (action === "add") {
+    return numOne + numTwo;
+  } else {
+    return numOne - numTwo;
+  }
+};
+//example 3
+
+let logDetails: (obj: { name: string; age: number }) => void;
+
+type person = { name: string; age: number };
+logDetails = (ninja: person) => {
+  console.log(`${ninja.name} is ${ninja.age} years old`);
 };
 
-const greet = (user: objWithName) => {
-  console.log(`${user.name} says hello`);
-};
+logDetails({
+  name: "Bob",
+  age: 12,
+});
