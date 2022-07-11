@@ -132,28 +132,44 @@
 
 //Function basics
 
-let greet: Function = () => {
-  console.log("Hello");
-};
-greet();
+// let greet: Function = () => {
+//   console.log("Hello");
+// };
+// greet();
 
 //c?: number | string, in here ? tells the c property is optional, so we could skip it, and we won't get any error for that.
 //c?: number | string when we don't pass any value it returns 'underfined'
-let add = (a: number, b: number, c?: number | string) => {
-  console.log(a + b);
+// let add = (a: number, b: number, c?: number | string) => {
+//   console.log(a + b);
+// };
+
+// //c: number | string = 2 , in this example we pass default value, so if we don't pass any value to 'c' property, it value will be '2'.
+// let multiply = (a: number, b: number, c: number | string = 2) => {
+//   console.log(a * b * +c);
+// };
+
+// add(2, 5);
+// multiply(2, 5);
+
+// const minus = (a: number, b: number) => {
+//   return a - b;
+// };
+
+// let result = minus(10, 7);
+// console.log(result);
+
+//Type Aliases.
+//Type aliases create a new name for a type. If the type name is too long you can introduce a different shorter name.
+type StringOrNum = string | number;
+type objWithName = {
+  name: string;
+  uid: StringOrNum;
 };
 
-//c: number | string = 2 , in this example we pass default value, so if we don't pass any value to 'c' property, it value will be '2'.
-let multiply = (a: number, b: number, c: number | string = 2) => {
-  console.log(a * b * +c);
+const logDetails = (uid: StringOrNum, item: string) => {
+  console.log(`${item} has a uid of ${uid}`);
 };
 
-add(2, 5);
-multiply(2, 5);
-
-const minus = (a: number, b: number) => {
-  return a - b;
+const greet = (user: objWithName) => {
+  console.log(`${user.name} says hello`);
 };
-
-let result = minus(10, 7);
-console.log(result);
