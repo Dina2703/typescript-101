@@ -120,3 +120,5 @@ myObj = {
 };
 
 console.log(myObj);
+
+console.log("test");
