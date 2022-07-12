@@ -1,5 +1,4 @@
 const anchor = document.querySelector("a")!;
-
 // if (anchor) {
 //   console.log(anchor.href);
 // }
@@ -20,3 +19,32 @@ const type = document.querySelector("#type") as HTMLSelectElement;
 const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
 const details = document.querySelector("#details") as HTMLInputElement;
 const amount = document.querySelector("#amount") as HTMLInputElement;
+
+//CLASSES
+class Invoice {
+  client: string;
+  details: string;
+  amount: number;
+
+  //initialize the values like 'c: string', then assign them to the props above, like 'this.client = c';
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
+
+  //define methods of the Invoice obj.
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`;
+  }
+}
+
+const invOne = new Invoice("Bob", "work on the park", 200);
+const invTwo = new Invoice("Sam", "work on the pool", 300);
+
+console.log(invOne, invTwo);
+
+let invoices: Invoice[] = [];
+invoices.push(invOne);
+invoices.push(invTwo);
+console.log(invoices);
