@@ -20,18 +20,38 @@ const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
 const details = document.querySelector("#details") as HTMLInputElement;
 const amount = document.querySelector("#amount") as HTMLInputElement;
 
-//CLASSES
-class Invoice {
-  client: string;
-  details: string;
-  amount: number;
+//3 modifiers:
+//PUBLIC which is default one - we can change and read the value outside of the class as well as inside of the class;
+// PRIVATE allows us to read and only change inside the class(inside a method).
+//READONLY allows us to read it both inside the calss and outside the class.
 
-  //initialize the values like 'c: string', then assign them to the props above, like 'this.client = c';
-  constructor(c: string, d: string, a: number) {
-    this.client = c;
-    this.details = d;
-    this.amount = a;
-  }
+//CLASSES
+//version #1
+// class Invoice {
+//   readonly client: string;
+//   public details: string;
+//   private amount: number;
+
+//   //initialize the values like 'c: string', then assign them to the props above, like 'this.client = c';
+//   constructor(c: string, d: string, a: number) {
+//     this.client = c;
+//     this.details = d;
+//     this.amount = a;
+//   }
+
+//   //define methods of the Invoice obj.
+//   format() {
+//     return `${this.client} owes $${this.amount} for ${this.details}`;
+//   }
+// }
+
+//version #2 short version
+class Invoice {
+  constructor(
+    readonly client: string,
+    private details: string,
+    public amount: number
+  ) {}
 
   //define methods of the Invoice obj.
   format() {
@@ -48,3 +68,7 @@ let invoices: Invoice[] = [];
 invoices.push(invOne);
 invoices.push(invTwo);
 console.log(invoices);
+
+invoices.forEach((inv) => {
+  console.log(inv.client, inv.details, inv.format());
+});
