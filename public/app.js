@@ -1,17 +1,54 @@
+// //Interfaces
+// interface IsPerson {
+//   name: string;
+//   age: number;
+//   speak(a: string): void;
+//   spend(a: number): number;
+// }
+// const me: IsPerson = {
+//   name: "sam",
+//   age: 30,
+//   speak(text: string): void {
+//     console.log(text);
+//   },
+//   spend(amount: number): number {
+//     console.log(`I spend ${amount}`);
+//     return amount;
+//   },
+// };
+// console.log(me);
+import { Payment } from "./classes/Payments.js";
 import { Invoice } from "./classes/Invoice.js";
-const anchor = document.querySelector("a");
+// const anchor = document.querySelector("a")!;
+//usage of a interface
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+// docOne = new Invoice("Sami", "web work", 250);
+// docTwo = new Payment("Mario", "data-analitic", 300);
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+// console.log(docs);
 // if (anchor) {
 //   console.log(anchor.href);
 // }
 // or we can add '!' mark at the end of the querySelector
-console.log(anchor.href);
+// console.log(anchor.href);
 //TYPE CASTING
 //when you grab tag itself, TS knows what what tag it is and all of the properties and methods are available for us. But when you grab class name better specify the tag name, by adding 'as', like '... as HTMLFormElement', in order to help TS recognize the tag and get access to all the props and method of it.
 const form = document.querySelector(".new-item-form");
 // console.log(form.children);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value === "invoice") {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
+    // console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
 });
 //inputs
 const type = document.querySelector("#type");
@@ -39,13 +76,13 @@ const amount = document.querySelector("#amount");
 //     return `${this.client} owes $${this.amount} for ${this.details}`;
 //   }
 // }
-const invOne = new Invoice("Bob", "work on the park", 200);
-const invTwo = new Invoice("Sam", "work on the pool", 300);
-console.log(invOne, invTwo);
-let invoices = [];
-invoices.push(invOne);
-invoices.push(invTwo);
-console.log(invoices);
-invoices.forEach((inv) => {
-    console.log(inv.client, inv.format());
-});
+// const invOne = new Invoice("Bob", "work on the park", 200);
+// const invTwo = new Invoice("Sam", "work on the pool", 300);
+// console.log(invOne, invTwo);
+// let invoices: Invoice[] = [];
+// invoices.push(invOne);
+// invoices.push(invTwo);
+// console.log(invoices);
+// invoices.forEach((inv) => {
+//   console.log(inv.client, inv.format());
+// });
