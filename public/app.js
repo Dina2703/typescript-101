@@ -1,4 +1,4 @@
-"use strict";
+import { Invoice } from "./classes/Invoice.js";
 const anchor = document.querySelector("a");
 // if (anchor) {
 //   console.log(anchor.href);
@@ -39,18 +39,6 @@ const amount = document.querySelector("#amount");
 //     return `${this.client} owes $${this.amount} for ${this.details}`;
 //   }
 // }
-//version #2 short version
-class Invoice {
-    constructor(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    //define methods of the Invoice obj.
-    format() {
-        return `${this.client} owes $${this.amount} for ${this.details}`;
-    }
-}
 const invOne = new Invoice("Bob", "work on the park", 200);
 const invTwo = new Invoice("Sam", "work on the pool", 300);
 console.log(invOne, invTwo);
@@ -59,5 +47,5 @@ invoices.push(invOne);
 invoices.push(invTwo);
 console.log(invoices);
 invoices.forEach((inv) => {
-    console.log(inv.client, inv.details, inv.format());
+    console.log(inv.client, inv.format());
 });

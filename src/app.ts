@@ -1,3 +1,4 @@
+import { Invoice } from "./classes/Invoice.js";
 const anchor = document.querySelector("a")!;
 // if (anchor) {
 //   console.log(anchor.href);
@@ -45,20 +46,6 @@ const amount = document.querySelector("#amount") as HTMLInputElement;
 //   }
 // }
 
-//version #2 short version
-class Invoice {
-  constructor(
-    readonly client: string,
-    private details: string,
-    public amount: number
-  ) {}
-
-  //define methods of the Invoice obj.
-  format() {
-    return `${this.client} owes $${this.amount} for ${this.details}`;
-  }
-}
-
 const invOne = new Invoice("Bob", "work on the park", 200);
 const invTwo = new Invoice("Sam", "work on the pool", 300);
 
@@ -70,5 +57,5 @@ invoices.push(invTwo);
 console.log(invoices);
 
 invoices.forEach((inv) => {
-  console.log(inv.client, inv.details, inv.format());
+  console.log(inv.client, inv.format());
 });
